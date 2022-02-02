@@ -18,13 +18,13 @@ void main() {
   const numberTrivia = NumberTrivia(text: "test", number: 1);
 
   test("should get trivia for the number from the repository", () async {
-    when(() => mockNumberTriviaRepository.getConreteNumberTrivia(triviaNumber)).thenAnswer((_) async => const Right(numberTrivia));
+    when(() => mockNumberTriviaRepository.getConcreteNumberTrivia(triviaNumber)).thenAnswer((_) async => const Right(numberTrivia));
 
     final result = await getConreteNumberTrivia(params: const Params(number: triviaNumber));
 
     expect(result, equals(const Right(numberTrivia)));
 
-    verify(() => mockNumberTriviaRepository.getConreteNumberTrivia(triviaNumber));
+    verify(() => mockNumberTriviaRepository.getConcreteNumberTrivia(triviaNumber));
     verifyNoMoreInteractions(mockNumberTriviaRepository);
   });
 }

@@ -13,7 +13,7 @@ class GetConcreteNumberTrivia extends Usecase<NumberTrivia, Params> {
   });
 
   Future<Either<Failure, NumberTrivia>?> call({required Params params}) async {
-    return await numberTriviaRepository.getConreteNumberTrivia(params.number);
+    return await numberTriviaRepository.getConcreteNumberTrivia(params.number);
   }
 }
 

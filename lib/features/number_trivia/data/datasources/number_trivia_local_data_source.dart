@@ -2,5 +2,5 @@ import 'package:number_trivia/features/number_trivia/data/models/number_trivia_m
 
 abstract class NumberTriviaLocalDataSource {
   Future<NumberTriviaModel> getLastNumberTrivia();
-  Future<void> cacheNumberTrivia(NumberTriviaModel numberTriviaToCache);
+  Future<void>? cacheNumberTrivia(NumberTriviaModel numberTriviaToCache);
 }

@@ -23,7 +23,7 @@ class NumberTriviaRemoteDataSourceImpl implements NumberTriviaRemoteDataSource {
 
   @override
   Future<NumberTriviaModel> getConcreteNumberTrivia(int number) async {
-    final response = await client.get(Uri.parse(serverUrlConcrete + triviaNumber.toString()), headers: headers);
+    final response = await client.get(Uri.parse(serverUrlConcrete + number.toString()), headers: headers);
 
     if (response.statusCode == 200) {
       final responseBody = json.decode(response.body);

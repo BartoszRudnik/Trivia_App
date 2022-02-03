@@ -29,20 +29,20 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     on<GetTriviaForConcreteNumber>((event, emit) async {
       final inputEither = inputConverter.stringToUnsignedInteger(event.numberString);
 
-      inputEither.fold((failure) {
+      await inputEither.fold((failure) {
         emit(const ErrorState(errorMessage: invalidInputFailureMessage));
       }, (integer) async {
         emit(Loading());
 
         final failureOrTrivia = await getConcreteNumberTrivia(params: Params(number: integer));
 
-        failureOrTrivia!.fold(
-          (failure) {
+        await failureOrTrivia!.fold(
+          (failure) async {
             emit(
               ErrorState(errorMessage: _mapFailureToMessage(failure)),
             );
           },
-          (trivia) {
+          (trivia) async {
             emit(Loaded(numberTrivia: trivia));
           },
         );
